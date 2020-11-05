@@ -1,0 +1,2335 @@
+{
+	"info": {
+		"_postman_id": "7d382f27-4f55-4a64-aa46-518779fde350",
+		"name": "Abhyudaya",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "95b9beb5-7f52-428b-b0e3-17c036bce756",
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"JWT\", data.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTQ1Mzk2NzcsImlhdCI6MTU5NDUzOTM3NywibmJmIjoxNTk0NTM5Mzc3LCJpZGVudGl0eSI6MTd9.3S3d10IBz_yrbM5ffSVf4Gr2TZaaOUu0PhiSECTM4W0",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n   \"email\": \"volunteer10@gmail.com\",\r\n   \"password\": \"volunteer10\",\r\n   \"first_name\": \"V_fname\",\r\n   \"last_name\": \"V_lname\",\r\n   \"gender\": \"male\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b80ff5cd-dc82-4e23-b865-9d5a423a8958",
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"JWT\", data.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTQ1Mzk2NzcsImlhdCI6MTU5NDUzOTM3NywibmJmIjoxNTk0NTM5Mzc3LCJpZGVudGl0eSI6MTd9.3S3d10IBz_yrbM5ffSVf4Gr2TZaaOUu0PhiSECTM4W0",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n   \"email\": \"volunteer10@gmail.com\",\r\n   \"password\": \"volunteer10\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/user?email=volunteer10@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "volunteer10@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/user/list?gender=male&type=general",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"list"
+					],
+					"query": [
+						{
+							"key": "gender",
+							"value": "male"
+						},
+						{
+							"key": "organization_name",
+							"value": "Kalikakendra",
+							"disabled": true
+						},
+						{
+							"key": "type",
+							"value": "general"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"teacher1\",\r\n    \"email\": \"teacher1@gmail.com\",\r\n    \"first_name\": \"teacher1\",\r\n    \"last_name\": \"tt\",\r\n    \"gender\": \"female\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Details",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n    \"email\": \"volunteer10@gmail.com\",\r\n    \"user_role_id\": \"3\",\r\n    \"gender\": \"male\",\r\n    \"teacher_code\": \"19ANK0100\",\r\n    \"other_param\": \"val1\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{JWT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"xyz@gmail.com\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Cluster",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "jwt {{JWT}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/cluster/:cluster_name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cluster",
+						":cluster_name"
+					],
+					"variable": [
+						{
+							"key": "cluster_name",
+							"value": "Bellary"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Cluster",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{JWT}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/cluster?cluster_name=Bellary_New",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cluster"
+					],
+					"query": [
+						{
+							"key": "cluster_name",
+							"value": "Bellary_New"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Cluster List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{JWT}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/cluster/list?isactive=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cluster",
+						"list"
+					],
+					"query": [
+						{
+							"key": "cluster_name",
+							"value": "Bellary_New",
+							"disabled": true
+						},
+						{
+							"key": "isactive",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Cluster",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{JWT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cluster_name\": \"Bellary_New\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/cluster",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cluster"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Cluster",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{JWT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cluster_name\": \"Bellary_New\",\r\n    \"isactive\": 1,\r\n    \"isdeprecated\": 1\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/cluster",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cluster"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Cluster",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cluster_name\": \"Bellary_new\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/cluster",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cluster"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Kalika Kendra",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/kalika_kendra?cluster_id=1&cluster_name=Anekal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"kalika_kendra"
+					],
+					"query": [
+						{
+							"key": "kalika_kendra_name",
+							"value": "ANEKAL 1",
+							"disabled": true
+						},
+						{
+							"key": "cluster_id",
+							"value": "1"
+						},
+						{
+							"key": "cluster_name",
+							"value": "Anekal"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Kalika Kendra List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/kalika_kendra/list?cluster_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"kalika_kendra",
+						"list"
+					],
+					"query": [
+						{
+							"key": "kalika_kendra_name",
+							"value": "ANEKAL 1",
+							"disabled": true
+						},
+						{
+							"key": "cluster_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Kalika Kendra",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{JWT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"kalika_kendra_name\": \"ANEKAL 4\",\r\n    \"cluster_name\": \"Anekal\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/kalika_kendra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"kalika_kendra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Kalika Kendra",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{JWT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"kalika_kendra_name\": \"ANEKAL 4\",\r\n    \"cluster_name\": \"Bellary\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/kalika_kendra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"kalika_kendra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Kalika Kendra",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"kalika_kendra_name\": \"ANEKAL 3\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/kalika_kendra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"kalika_kendra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Student",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/student?student_name=Redd Dufoure",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"student"
+					],
+					"query": [
+						{
+							"key": "kalika_kendra_name",
+							"value": "SARAKKI K P S",
+							"disabled": true
+						},
+						{
+							"key": "gender",
+							"value": "Female",
+							"disabled": true
+						},
+						{
+							"key": "class_std",
+							"value": "6",
+							"disabled": true
+						},
+						{
+							"key": "teacher_code",
+							"value": "10VBN002",
+							"disabled": true
+						},
+						{
+							"key": "student_name",
+							"value": "Redd Dufoure"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Student List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/student/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"student",
+						"list"
+					],
+					"query": [
+						{
+							"key": "kalika_kendra_name",
+							"value": "SARAKKI K P S",
+							"disabled": true
+						},
+						{
+							"key": "gender",
+							"value": "Female",
+							"disabled": true
+						},
+						{
+							"key": "class_std",
+							"value": "6",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Student",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4f97554d-488e-4a91-998c-f34b25b82e97",
+						"exec": [
+							"// -- Only teacher for the kalika-kendra"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"student_name\": \"Rudra Ghosh\",\r\n    \"kalika_kendra_name\": \"ANEKAL 2\",\r\n    \"cluster_name\": \"Anekal\",\r\n    \"gender\": \"male\",\r\n    \"aadhar\": 1234,\r\n    \"class_std\": \"10\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Student Data",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"aadhar\": \"126-87-9296\",\r\n    \"student_name\": \"Rudra Ghosh\",\r\n    \"kalika_kendra_name\": \"ANEKAL 1\",\r\n    \"cluster_name\": \"Anekal\",\r\n    \"gender\": \"male\",\r\n    \"class_std\": \"12\",\r\n    \"register_date\": \"2019-10-03 00:00:00\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Student",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"aadhar\": \"126-87-9296\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Teacher",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/teacher?teacher_name=Rudra Ghosh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"teacher"
+					],
+					"query": [
+						{
+							"key": "teacher_name",
+							"value": "Rudra Ghosh"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Teacher List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/teacher/list?kalika_kendra_id=65",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"teacher",
+						"list"
+					],
+					"query": [
+						{
+							"key": "cluster_name",
+							"value": "Sarakki",
+							"disabled": true
+						},
+						{
+							"key": "kalika_kendra_id",
+							"value": "65"
+						},
+						{
+							"key": "teacher_name",
+							"value": "Rudra Ghosh",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Teacher",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"teacher_name\": \"volunteer10\",\r\n    \"kalika_kendra_name\": \"ANEKAL 2\",\r\n    \"cluster_name\": \"Anekal\",\r\n    \"teacher_code\": \"19ANK0100\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/teacher",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"teacher"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Teacher Details",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"teacher_code\": \"19ANK0100\",\r\n    \"isactive\": 0\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/teacher",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"teacher"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Teacher",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"teacher_code\": \"19ANK0100\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/teacher",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"teacher"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Organization",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/organization?organization_desc=Kalikakendra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"organization"
+					],
+					"query": [
+						{
+							"key": "organization_name",
+							"value": "Abhyudaya",
+							"disabled": true
+						},
+						{
+							"key": "organization_id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "organization_desc",
+							"value": "Kalikakendra"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Organization",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"organization_name\": \"Abhyudaya1\",\r\n        \"organization_desc\": \"Abhyudaya1\",\r\n        \"isactive\": 1\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/organization",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"organization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Organization",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"organization_name\": \"Abhyudaya1\",\r\n        \"organization_desc\": \"Abhyudaya Desc\",\r\n        \"isactive\": 1\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/organization",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"organization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Organization",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"organization_name\": \"Abhyudaya1\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/organization",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"organization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Role",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/user_role?role_name=Admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user_role"
+					],
+					"query": [
+						{
+							"key": "role_name",
+							"value": "Admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add User Role",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"role_name\": \"role1\",\r\n    \"organization_name\": \"Abhyudaya\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/user_role",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user_role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Role",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"role_name\": \"role1\",\r\n    \"organization_name\": \"Abhyudaya\",\r\n    \"role_desc\": \"dumy\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/user_role",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user_role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User Role",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"role_name\": \"role1\",\r\n    \"organization_name\": \"Abhyudaya\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/user_role",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user_role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Subject",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/subject?subject_name=Language",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"subject"
+					],
+					"query": [
+						{
+							"key": "subject_name",
+							"value": "Language"
+						},
+						{
+							"key": "subject_code",
+							"value": "MATH",
+							"disabled": true
+						},
+						{
+							"key": "hierarchy",
+							"value": "True",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Subject List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5000/subject/list?hierarchy=True",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"subject",
+						"list"
+					],
+					"query": [
+						{
+							"key": "subject_name",
+							"value": "Language",
+							"disabled": true
+						},
+						{
+							"key": "subject_code",
+							"value": "MATH",
+							"disabled": true
+						},
+						{
+							"key": "hierarchy",
+							"value": "True"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Assessment Period",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/assessment_period?assessment_period_id=159",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_period"
+					],
+					"query": [
+						{
+							"key": "assessment_period_id",
+							"value": "159"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Assessment Period List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/assessment_period/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_period",
+						"list"
+					],
+					"query": [
+						{
+							"key": "assessment_year",
+							"value": "2020",
+							"disabled": true
+						},
+						{
+							"key": "period",
+							"value": "Q1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Assessment Period",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"session\": \"2019-20\",\r\n        \"period\": \"Q1\",\r\n        \"assessment_year\": 2021,\r\n        \"assessment_month\": null,\r\n        \"assessment_day\": null\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:5000/assessment_period",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_period"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Assessment Period",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"assessment_period_id\": 161,\r\n        \"period\": \"Q1\",\r\n        \"assessment_year\": 2021,\r\n        \"assessment_month\": 1,\r\n        \"assessment_day\": 1\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/assessment_period",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_period"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Assessment Period",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"assessment_year\": \"2021\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/assessment_period",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_period"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Assessment Category",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/assessment_category?subject_name=Mathematics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_category"
+					],
+					"query": [
+						{
+							"key": "category_id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "subject_id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "subject_name",
+							"value": "Mathematics"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Assessment Category List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/assessment_category/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_category",
+						"list"
+					],
+					"query": [
+						{
+							"key": "category_id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "subject_id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Assessment Category",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \r\n    \"category_name\": \"Listening3\",\r\n    \"category_code\": \"L_LANG3\",\r\n    \"subject_id\": 1\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/assessment_category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Assessment Category",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category_id\": 186,\r\n    \"isactive\": 0\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/assessment_category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Assessment Category",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"isactive\": 0\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/assessment_category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Assessment Skill",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/assessment_skill?subject_id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_skill"
+					],
+					"query": [
+						{
+							"key": "category_id",
+							"value": "5",
+							"disabled": true
+						},
+						{
+							"key": "subject_id",
+							"value": "2"
+						},
+						{
+							"key": "skill_id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "skill_name",
+							"value": "Attentiveness",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Assessment Skill List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/assessment_skill/list?subject_name=Language",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_skill",
+						"list"
+					],
+					"query": [
+						{
+							"key": "category_id",
+							"value": "5",
+							"disabled": true
+						},
+						{
+							"key": "subject_id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "subject_name",
+							"value": "Language"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Assessment Skill",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \r\n    \"skill_name\": \"Addition2\",\r\n    \"skill_code\": \"AD_B_MATH2\",\r\n    \"subject_id\": 2,\r\n    \"category_id\": 5,\r\n    \"isactive\":0\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/assessment_skill",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_skill"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Assessment Skill",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{        \r\n    \"skill_id\": \"176\",\r\n    \"isactive\":0\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/assessment_skill",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_skill"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Assessment Skill",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{           \r\n    \"isactive\":0\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/assessment_skill",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_skill"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Assessment Result",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/assessment_result?result_id=12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_result"
+					],
+					"query": [
+						{
+							"key": "period_id",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "subject_name",
+							"value": "Mathematics",
+							"disabled": true
+						},
+						{
+							"key": "skill_name",
+							"value": "Conversation",
+							"disabled": true
+						},
+						{
+							"key": "result_id",
+							"value": "12"
+						},
+						{
+							"key": "cluster_id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "kalika_kendra_name",
+							"value": "ANEKAL 1",
+							"disabled": true
+						},
+						{
+							"key": "kalika_kendra_id",
+							"value": "6",
+							"disabled": true
+						},
+						{
+							"key": "cluster_name",
+							"value": "Bellary_new",
+							"disabled": true
+						},
+						{
+							"key": "result_id",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Assessment Result List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/assessment_result/list?assessment_period_id=2&subject_name=Mathematics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_result",
+						"list"
+					],
+					"query": [
+						{
+							"key": "assessment_period_id",
+							"value": "2"
+						},
+						{
+							"key": "subject_name",
+							"value": "Mathematics"
+						},
+						{
+							"key": "assessment_skill_name",
+							"value": "Conversation",
+							"disabled": true
+						},
+						{
+							"key": "result_id",
+							"value": "12",
+							"disabled": true
+						},
+						{
+							"key": "cluster_id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "kalika_kendra_name",
+							"value": "ANEKAL 1",
+							"disabled": true
+						},
+						{
+							"key": "cluster_name",
+							"value": "Bellary_new",
+							"disabled": true
+						},
+						{
+							"key": "student_id",
+							"value": "12",
+							"disabled": true
+						},
+						{
+							"key": "assessment_category_name",
+							"value": "Speaking",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Assessment Result",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"result_id\": 5,\r\n    \"attempt_id\": 1,\r\n    \"student_id\": 5,\r\n    \"student_name\": \"Thorny Letch\",\r\n    \"subject_id\": 5,\r\n    \"subject_name\": \"Health\",\r\n    \"category_id\": 5,\r\n    \"category_name\": \"Basic_Math\",\r\n    \"skill_id\": 5,\r\n    \"skill_name\": \"Conversation\",\r\n    \"period_id\": 1,\r\n    \"year\": 2020,\r\n    \"month\": null,\r\n    \"day\": null,\r\n    \"session\": \"2019-20\",\r\n    \"score\": 10,\r\n    \"full_score\": 10\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/assessment_result",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_result"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Assessment Result",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"result_id\": 12,\r\n    \"attempt_id\": 3,\r\n    \"score\": 9,\r\n    \"assessment_category_id\": 1\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/assessment_result",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_result"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Assessment Result",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{JWT}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n    \"attempt_id\": 3\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/assessment_result",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"assessment_result"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,14 @@
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 327-954-085
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+C:\Users\rghosh\PycharmProjects\ProBono\venv\lib\site-packages\pymysql\cursors.py:170: Warning: (3719, "'utf8' is currently an alias for the character set UTF8MB3, but will be an alias for UTF8MB4 in a future release. Please consider using UTF8MB4 in order to be unambiguous.")
+  result = self._query(query)
+127.0.0.1 - - [28/Sep/2020 11:39:46] "[37mPOST /login HTTP/1.1[0m" 200 -
+127.0.0.1 - - [28/Sep/2020 11:39:58] "[37mPOST /login HTTP/1.1[0m" 200 -
+127.0.0.1 - - [28/Sep/2020 11:40:08] "[37mPOST /login HTTP/1.1[0m" 200 -
